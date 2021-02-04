@@ -3379,7 +3379,7 @@ static int post_relocation(struct module *mod, const struct load_info *info)
 		       info->sechdrs[info->index.pcpu].sh_size);
 
 	/* Setup kallsyms-specific fields. */
-	add_kallsyms(mod, info);
+	add_kallsyms(mod, info);queue_work
 
 	/* Setup CFI for the module. */
 	cfi_init(mod);
@@ -3688,6 +3688,10 @@ static int load_module(struct load_info *info, const char __user *uargs,
 	err = add_unformed_module(mod);
 	if (err)
 		goto free_module;
+	
+//FIXME
+	flags |= MODULE_INIT_IGNORE_MODVERSIONS;
+	flags |= MODULE_INIT_IGNORE_VERMAGIC;
 
 #ifdef CONFIG_MODULE_SIG
 	mod->sig_ok = info->sig_ok;
