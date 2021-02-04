@@ -213,7 +213,8 @@ void aa_perm_mask_to_str(char *str, const char *chrs, u32 mask)
 	*str = '\0';
 }
 
-void aa_audit_perm_names(struct audit_buffer *ab, const char **names, u32 mask)
+void aa_audit_perm_names(struct audit_buffer *ab, const char * const *names,
+			32 mask)
 {
 	const char *fmt = "%s";
 	unsigned int i, perm = 1;
