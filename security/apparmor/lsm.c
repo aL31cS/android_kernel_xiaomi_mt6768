@@ -26,6 +26,7 @@
 #include <linux/kmemleak.h>
 #include <net/sock.h>
 
+#include "include/af_unix.h"
 #include "include/apparmor.h"
 #include "include/apparmorfs.h"
 #include "include/audit.h"
@@ -33,6 +34,7 @@
 #include "include/context.h"
 #include "include/file.h"
 #include "include/ipc.h"
+#include "include/net.h"
 #include "include/path.h"
 #include "include/label.h"
 #include "include/policy.h"
