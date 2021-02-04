@@ -101,6 +101,19 @@ static inline int aa_profile_af_sk_perm(struct aa_profile *profile,
 				  sk->sk_type);
 }
 
+int aa_sock_perm(const char *op, u32 request, struct socket *sock);
+int aa_sock_create_perm(struct aa_label *label, int family, int type,
+			int protocol);
+int aa_sock_bind_perm(struct socket *sock, struct sockaddr *address,
+		      int addrlen);
+int aa_sock_connect_perm(struct socket *sock, struct sockaddr *address,
+			 int addrlen);
+int aa_sock_listen_perm(struct socket *sock, int backlog);
+int aa_sock_accept_perm(struct socket *sock, struct socket *newsock);
+int aa_sock_msg_perm(const char *op, u32 request, struct socket *sock,
+		     struct msghdr *msg, int size);
+int aa_sock_opt_perm(const char *op, u32 request, struct socket *sock, int level,
+		     int optname);
 
 int aa_sock_file_perm(struct aa_label *label, const char *op, u32 request,
 		      struct socket *sock);
