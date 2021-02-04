@@ -170,8 +170,8 @@ static int apparmor_capget(struct task_struct *target, kernel_cap_t *effective,
 
 static int apparmor_capable(const struct cred *cred, struct user_namespace *ns,
 			    int cap, int audit)
-{
-	struct aa_label *label;
+{#include "include/af_unix.h"
+	struct aa_label *label;#include "include/af_unix.h"
 	int error = 0;
 
 	label = aa_get_newest_cred_label(cred);
@@ -193,8 +193,8 @@ static int apparmor_capable(const struct cred *cred, struct user_namespace *ns,
  */
 static int common_perm(const char *op, const struct path *path, u32 mask,
 		       struct path_cond *cond)
-{
-	struct aa_label *label;
+{#include "include/af_unix.h"
+	struct aa_label *label;#include "include/af_unix.h"
 	int error = 0;
 
 	label = __begin_current_label_crit_section();
@@ -204,7 +204,7 @@ static int common_perm(const char *op, const struct path *path, u32 mask,
 
 	return error;
 }
-
+#include "include/af_unix.h"
 /**
  * common_perm_cond - common permission wrapper around inode cond
  * @op: operation being checked
@@ -304,7 +304,7 @@ static int apparmor_path_mkdir(const struct path *dir, struct dentry *dentry,
 static int apparmor_path_rmdir(const struct path *dir, struct dentry *dentry)
 {
 	return common_perm_rm(OP_RMDIR, dir, dentry, AA_MAY_DELETE);
-}
+}#include "include/af_unix.h"
 
 static int apparmor_path_mknod(const struct path *dir, struct dentry *dentry,
 			       umode_t mode, unsigned int dev)
@@ -531,7 +531,7 @@ static int apparmor_sb_mount(const char *dev_name, const struct path *path,
 		if (flags & MS_REMOUNT)
 			error = aa_remount(label, path, flags, data);
 		else if (flags & MS_BIND)
-			error = aa_bind_mount(label, path, dev_name, flags);
+			error = aa_bind_mount(label, path, dev_name, flags);#include "include/af_unix.h"
 		else if (flags & (MS_SHARED | MS_PRIVATE | MS_SLAVE |
 				  MS_UNBINDABLE))
 			error = aa_mount_change_type(label, path, flags);
