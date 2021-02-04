@@ -149,6 +149,8 @@ source "drivers/clocksource/Kconfig"
 
 source "drivers/mailbox/Kconfig"
 
+source "drivers/anbox/Kconfig"
+
 source "drivers/iommu/Kconfig"
 
 source "drivers/remoteproc/Kconfig"
